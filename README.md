@@ -1,6 +1,6 @@
 # ST211: Open Source Software
 
-<p style="text-align: justify">
+<p align="justify">
 The practical objective of this course you will learn how to participate in a OSS projects
 by improving aspects of the software that they feel that they're wrong, suggesting
 possible improvement, or just raising issues for the existing solutions.
