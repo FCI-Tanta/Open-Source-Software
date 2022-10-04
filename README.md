@@ -13,9 +13,12 @@ an open source project in 2015 as a part of Microsoft's software revolution.
 
 ### Section Objectives
 
+Part 1 -
 - Recap on HTML boilerplate and basics
 - Recap on JS syntax and basic programming skills
 - Recap on String manipulation
+
+Part 2 -
 - Recap on Arrays
 - Recap on some Algorithms
 - Recap on some Data Structures
