@@ -128,8 +128,10 @@ var x = true;
 | /= (Divide and Assigment)   | Assigns values from the current value of the left side operand *divided by* the right side operand to the left side operand (e.g. x /= 5, equivalent to x = x / 5)         |
 | %= (Modulus and Assigment)  | Assigns the *reminder* from the current value of the left side operand *divided by* the right side operand to the left side operand (e.g. x %= 5, equivalent to x = x % 5) |
 
-- Functions: a group of statements which can be called to accomplish a specific task. The function usually has the
-  following criterias: -
+### Functions
+
+A function is a group of statements which can be called to accomplish a specific task. The function usually has the
+following criterias: -
     * NAME: a special name that we give to the function to call it with.
     * Return Value (Optional): a value that the function will give back after it finishes executions.
     * Parameters (Optional): a number of values that the function takes to be able to accomplish a specific task.
@@ -158,8 +160,11 @@ function sum(x, y) {
 | `prompt` | a function that asks the user to enter a value | `message`: a message to show to the user as a hint    |
 | `alert`  | a function that sends a message to the user    | `message`: a message to show to the user as an output |
 
-- Control Flow: the order in which the computer executes statements in a script; using a condition which is usually an
-  boolean expression.
+### Control Flow
+
+Control Flow is the order in which the computer executes statements in a script; using a condition which is usually an
+boolean expression.
+
 - Conditional Statements: the first type of control flow statements which specify if a specific block of code will be
   executed or not.
 
@@ -229,7 +234,9 @@ do {
 } while (condition); // re-execute the previous block if the condition is true
 ```
 
-- Strings: are a group of characters stored together denoted by single or double quotes (e.g. `var x = 'abc';`
+### Strings
+
+Strings are a group of characters stored together denoted by single or double quotes (e.g. `var x = 'abc';`
   or `var x = "abc";`)
 
 - Properties: -
