@@ -14,11 +14,13 @@ an open source project in 2015 as a part of Microsoft's software revolution.
 ### Section Objectives
 
 Part 1 -
+
 - Recap on HTML boilerplate and basics
 - Recap on JS syntax and basic programming skills
 - Recap on String manipulation
 
 Part 2 -
+
 - Recap on Arrays
 - Recap on some Algorithms
 - Recap on some Data Structures
@@ -125,19 +127,24 @@ var x = true;
 | Operator                    | Description                                                                                                                                                                |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | = (Simple Assignment)       | Assigns values from the right side operand to the left side operand (e.g. x = 3 + 5)                                                                                       |
-| += (Add and Assigment)      | Assigns values from the current value of the left side operand *plus* the right side operand to the left side operand (e.g. x += 5, equivalent to x = x + 5)               |
-| -= (Subtract and Assigment) | Assigns values from the current value of the left side operand *minus* the right side operand to the left side operand (e.g. x -= 5, equivalent to x = x - 5)              |
-| *= (Multiply and Assigment) | Assigns values from the current value of the left side operand *multiple* the right side operand to the left side operand (e.g. x *= 5, equivalent to x = x * 5)           |
-| /= (Divide and Assigment)   | Assigns values from the current value of the left side operand *divided by* the right side operand to the left side operand (e.g. x /= 5, equivalent to x = x / 5)         |
-| %= (Modulus and Assigment)  | Assigns the *reminder* from the current value of the left side operand *divided by* the right side operand to the left side operand (e.g. x %= 5, equivalent to x = x % 5) |
+| += (Add and Assigment)      | Assigns values from the current value of the left side operand *
+plus* the right side operand to the left side operand (e.g. x += 5, equivalent to x = x + 5)               |
+| -= (Subtract and Assigment) | Assigns values from the current value of the left side operand *
+minus* the right side operand to the left side operand (e.g. x -= 5, equivalent to x = x - 5)              |
+| *= (Multiply and Assigment) | Assigns values from the current value of the left side operand *
+multiple* the right side operand to the left side operand (e.g. x *= 5, equivalent to x = x * 5)           |
+| /= (Divide and Assigment)   | Assigns values from the current value of the left side operand *divided
+by* the right side operand to the left side operand (e.g. x /= 5, equivalent to x = x / 5)         |
+| %= (Modulus and Assigment)  | Assigns the *reminder* from the current value of the left side operand *divided
+by* the right side operand to the left side operand (e.g. x %= 5, equivalent to x = x % 5) |
 
 ### Functions
 
 A function is a group of statements which can be called to accomplish a specific task. The function usually has the
 following criterias: -
-    * NAME: a special name that we give to the function to call it with.
-    * Return Value (Optional): a value that the function will give back after it finishes executions.
-    * Parameters (Optional): a number of values that the function takes to be able to accomplish a specific task.
+* NAME: a special name that we give to the function to call it with.
+* Return Value (Optional): a value that the function will give back after it finishes executions.
+* Parameters (Optional): a number of values that the function takes to be able to accomplish a specific task.
 
 ```js
 // Function called log with no parameters and no return value
@@ -240,7 +247,7 @@ do {
 ### Strings
 
 Strings are a group of characters stored together denoted by single or double quotes (e.g. `var x = 'abc';`
-  or `var x = "abc";`)
+or `var x = "abc";`)
 
 - Properties: -
 
@@ -272,6 +279,147 @@ Strings are a group of characters stored together denoted by single or double qu
 | Operator | Description                   | Syntax               |
 |----------|-------------------------------|----------------------|
 | +        | Converts the string to number | `+'100'` returns 100 |
+
+
+### Arrays
+
+The array is a data structure that lets you store multiple values in a single variable accessed by indices.
+
+- Syntax: -
+
+```js
+// Initialization
+var names = new Array("ibrahim", "gamal", "mohamed");
+// Or, a better way
+var names = ["ibrahim", "gamal", "mohamed"];
+
+// Accessing variables
+names[0] = "ibrahim"
+names[1] = "gamal"
+names[2] = "mohamed"
+```
+
+- Properties: -
+
+| Property | Description                     | Syntax                        |
+|----------|---------------------------------|-------------------------------|
+| `length` | returns the length of the array | `[1, 2, 3].length`: returns 3 |
+
+- Member Functions (Methods): -
+
+| Method        | Description                                                                                          | Syntax                                         |
+|---------------|------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| `push`        | adds one or more elements to the end of the array and returns the new length of the array            | `[1, 2].push(3)` returns 3, arr = [1, 2, 3]    |
+| `unshift`     | adds one or more elements to the start of the array and returns the new length of the array          | `[1, 2].unshift(3)` returns 3, arr = [3, 1, 2] |
+| `pop`         | removes the last element from the array and returns it                                               | `[1, 2].pop()` returns 2                       |
+| `shift`       | removes the first element from the array and returns it                                              | `[1, 2].shift()` returns 2                     |
+| `includes`    | returns a boolean indicating whether the value exists or not                                         | `[1, 2, 3].includes(2)` returns true           |
+| `indexOf`     | returns the index of the first occurence of the specified value, or -1 if it doesn't exist           | `[1, 2, 3].indexOf(2)` returns 1               |
+| `lastIndexOf` | returns the index of the last occurence of the specified value, or -1 if it doesn't exist            | `[1, 2, 2, 3].lastIndexOf(2)` returns 2        |
+| `join`        | returns a string resulted from joining all the elements in the array separated by a specific element | `[1, 2, 3].join('')` returns '123'             |
+| `reverse`     | returns a reversed version of the array                                                              | `[1, 2, 3].reverse()` returns [3, 2, 1]        |
+| `slice`       | returns a subarray from the original array                                                           | `[1, 2, 3].slice(1, 3)` returns [2, 3]         |
+| `splice`      | returns a subarray from the original array and removes it from the original                          | `[1, 2, 3].splice(1, 1)` returns [2]           |
+| `sort`        | returns a sorted array                                                                               | `[3, 2, 1].sort()` returns [1, 2, 3]           |
+
+### Objects
+
+Objects are composed of attributes. If an attribute contains a function, it is considered to be a method of the object,
+otherwise the attribute is considered a property.
+
+- Syntax: -
+
+```js
+var person = new Object({
+  fullName: 'Ibrahim Gamal',
+  eat: function () {
+      console.log('Eating ...');
+  }
+});
+// Or
+var person = {
+  fullName: 'Ibrahim Gamal',
+  eat: function () {
+      // 'this' is keyword used to access an object within a context
+      console.log(this.fullName + ' is eating ...');
+  }
+}
+
+// Accessing attributes
+person.fullName = 'Ibrahim Gamal'
+person.eat()
+// Or
+person['fullName'], person['eat']()
+```
+
+### Classes
+
+Classes are templates for Objects.
+
+- Syntax: -
+
+```js
+// Creation
+class Person {
+    constructor(fullName) {
+        this.fullName = fullName;
+    }
+    
+    eat() {
+      // 'this' is keyword used to access an object within a context
+      console.log(this.fullName + ' is eating ...');
+    }
+}
+
+// Usage
+var ibrahim = new Person('Ibrahim Gamal');
+
+// Accessing attributes
+ibrahim.eat()
+```
+
+### Algorithms
+
+An algorithm is a procedure used for solving a problem or performing a computation. Algorithms act as an exact list of
+instructions that conduct specified actions step by step in either hardware- or software-based routines.
+
+### Common Algorithms' Pseudocode
+
+- Binary Search: a fast search algorithm with time complexity of Ο(log n) that works only with sorted arrays
+
+```
+A = sorted array
+n = size of array
+x = value to be searched
+
+low = 1
+high = n 
+
+while low >= high
+   mid = low + ( high - low ) / 2
+   
+   if A[mid] < x
+      low = mid + 1
+      
+   if A[mid] > x
+      high = mid - 1 
+
+   if A[mid] = x 
+      return mid
+```
+
+- Insertion Sort: an efficient algorithm for sorting a small number of elements.
+
+```
+A = array
+for i = 2 to length[A]
+     key = A[i]
+     j = i - 1
+     while j > 0 and A[j] > key
+        A[j + 1] = A[j]
+        j = j - 1
+     A[j + 1] = key
+```
 
 ### Task 1: HTML boilerplate
 
@@ -373,5 +521,74 @@ OUT> 6
 
 Explanation:
 a = 1, b = 2, c = 3
+```
 
+### Task 9: Max Number
+
+```
+Create a web page that do the following: -
+1) Asks the user for the length of an array in a dialog
+2) Asks the user for each value in the array in a dialog
+2) Outputs the max of the array in another dialog
+
+Example:
+IN> 3
+IN> 1
+IN> 2
+IN> 3
+OUT> 3
+```
+
+### Task 10: Last Even Number
+
+```
+Create a web page that do the following: -
+1) Asks the user for the length of an array in a dialog
+2) Asks the user for each value in the array in a dialog
+2) Outputs the last even number in the array in another dialog
+
+Example:
+IN> 3
+IN> 1
+IN> 2
+IN> 3
+OUT> 2
+```
+
+### Task 11: Implement Binary Search
+
+### Task 12: Implement Insertion Sort
+
+### Task 13: Reverse a LinkedList
+
+```
+Create a web page that do the following: -
+1) Asks the user for the length of an array in a dialog
+2) Asks the user for each value in the array in a dialog
+2) Outputs the array in a reversed order in another dialog
+
+Example:
+IN> 3
+IN> 1
+IN> 2
+IN> 3
+OUT> 3 2 1
+```
+
+### Task 14: Most Frequent Number
+
+```
+Create a web page that do the following: -
+1) Asks the user for the length of an array in a dialog
+2) Asks the user for each value in the array in a dialog
+2) Outputs the most frequent number and the number of frequency in another dialog
+
+Example:
+IN> 5
+IN> 1
+IN> 2
+IN> 3
+IN> 4
+IN> 2
+OUT> 2 with frequency of 2
 ```
