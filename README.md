@@ -312,7 +312,7 @@ names[2] = "mohamed"
 | `push`        | adds one or more elements to the end of the array and returns the new length of the array            | `[1, 2].push(3)` returns 3, arr = [1, 2, 3]    |
 | `unshift`     | adds one or more elements to the start of the array and returns the new length of the array          | `[1, 2].unshift(3)` returns 3, arr = [3, 1, 2] |
 | `pop`         | removes the last element from the array and returns it                                               | `[1, 2].pop()` returns 2                       |
-| `shift`       | removes the first element from the array and returns it                                              | `[1, 2].shift()` returns 2                     |
+| `shift`       | removes the first element from the array and returns it                                              | `[1, 2].shift()` returns 1                     |
 | `includes`    | returns a boolean indicating whether the value exists or not                                         | `[1, 2, 3].includes(2)` returns true           |
 | `indexOf`     | returns the index of the first occurence of the specified value, or -1 if it doesn't exist           | `[1, 2, 3].indexOf(2)` returns 1               |
 | `lastIndexOf` | returns the index of the last occurence of the specified value, or -1 if it doesn't exist            | `[1, 2, 2, 3].lastIndexOf(2)` returns 2        |
