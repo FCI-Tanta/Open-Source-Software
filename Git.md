@@ -191,6 +191,12 @@ git remote add origin https://github.com/FCI/Open-Source-Software.git
 
 # Push Commits
 git push origin master
+
+# Clone Repo
+git clone <url>
+
+# Pull History
+git pull
 ```
 
 Ignoring files
