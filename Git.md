@@ -68,36 +68,50 @@ C:\>echo Hello World
 Version control is a system that records changes to a file or set of files over time so that you can recall specific
 versions later.
 
-- Local Version Control
+- Local Version Control Systems
 
   Many people’s version-control method of choice is to copy files into another directory (perhaps a
   time-stamped directory, if they’re clever). This approach is very common because it is so simple, but
   it is also incredibly error prone. It is easy to forget which directory you’re in and accidentally write
   to the wrong file or copy over files you don’t mean to.
 
-  One of the most popular VCS tools was a system called RCS, which is still distributed with many
-  computers today. RCS works by keeping patch sets (that is, the differences between files) in a special
+  In the early 1980s, a system called RCS was release, which is still distributed with many
+  computers today. RCS works by keeping _patch sets_ (that is, the differences between files) in a special
   format on disk; it can then re-create what any file looked like at any point in time by adding up all
   the patches.
 
+![local](local.png)
 
-- Centralized Version Control
+- Centralized Version Control Systems
 
   The next major issue that people encounter is that they need to collaborate with developers on
   other systems. To deal with this problem, Centralized Version Control Systems (CVCSs) were
   developed. These systems (such as CVS, Subversion, and Perforce) have a single server that contains
   all the versioned files, and a number of clients that check out files from that central place. For
   many years, this has been the standard for version control.
+  <br />
+  <br />
+  However, this setup also has some serious downsides. The most obvious is the _single point of failure_
+  that the centralized server represents. If that server goes down for an hour, then during that hour
+  nobody can collaborate at all or save versioned changes to anything they’re working on. If the hard
+  disk the central database is on becomes corrupted, and proper backups haven’t been kept, you lose
+  absolutely everything, the entire history of the project except whatever single snapshots people
+  happen to have on their local machines. Local VCS systems suffer from this same
+  problem, whenever you have the entire history of the project in a single place, you risk losing
+  everything.
 
+![shared](shared.png)
 
-- Distributed Version Control
+- Distributed Version Control Systems
 
   This is where Distributed Version Control Systems (DVCSs) step in. In a DVCS (such as Git, Mercurial,
   Bazaar or Darcs), clients don’t just check out the latest snapshot of the files; rather, they fully
   mirror the repository, including its full history. Thus, if any server dies, and these systems were
   collaborating via that server, any of the client repositories can be copied back up to the server to
   restore it. Every clone is really a full backup of all the data.
-
+  <br />
+  <br />
+  **Why should we use a centralized server then ?**
 
 ### History of Git
 
@@ -125,16 +139,18 @@ Some of the goals of the new system were as follows:
 
 Git Terminologies: -
 
-The working tree is a single checkout of one version of the project. These files are pulled out of the
+The _working tree_ is a single checkout of one version of the project. These files are pulled out of the
 compressed database in the Git directory and placed on disk for you to use or modify.
 
-The staging area is a file, generally contained in your Git directory, that stores information about
+The _Git directory_ is directory where Git stores the metadata and object database for your project. This is the
+most important part of Git, and it is what is copied when you clone a repository from another
+computer.
+
+The _staging area_ is a file, generally contained in your Git directory, that stores information about
 what will go into your next commit. Its technical name in Git parlance is the “index”, but the phrase
 “staging area” works just as well.
 
-The Git directory is where Git stores the metadata and object database for your project. This is the
-most important part of Git, and it is what is copied when you clone a repository from another
-computer.
+_Commits_ are the core building block units of a Git project timeline.
 
 ![working-tree](working-tree.png)
 
@@ -168,7 +184,13 @@ git add <filename>
 # Or,
 git add *.<fileextension>
 # Or,
-git add -a
+git add --a
+
+# Remove file from Staging Area
+git reset <filename>
+
+# Delete the file from project and stage the removal for commit 
+git rm <filename>
 
 # Check Files Status
 git status
@@ -177,9 +199,11 @@ git status -s # short status
 # Commit files from Staging Area
 git commit -m "Initial Commit"
 
-# Undoing Things
-git commit --amend
-git reset <filename>
+# diff of what is changed but not staged
+git diff
+
+# diff of what is staged but not yet committed
+git diff --staged
 
 # Check repo history
 git log
@@ -197,6 +221,9 @@ git clone <url>
 
 # Pull History
 git pull
+
+# Undoing Things
+git commit --amend
 ```
 
 Ignoring files
@@ -224,3 +251,36 @@ doc/**/*.pdf
 ```
 
 [Git Cheat Sheet](git-cheat-sheet-education.pdf)
+
+### GitHub
+
+GitHub is the single largest host for Git repositories, and is the central point of collaboration for
+millions of developers and projects. A large percentage of all Git repositories are hosted on GitHub,
+and many open-source projects use it for Git hosting, issue tracking, code review, and other things.
+
+What you should know is the following: -
+
+1) Create an account
+2) Create a repository
+3) README.md
+4) .gitignore
+5) Licenses
+6) Connect to local Repo
+7) Perform git operations (Pull, Push, History, View Changes, New Branch, Merge Branches, PRs)
+8) Issues
+9) GitHub Repository Actions (Issues, Watch, Fork, Stars)
+
+### Task: Work on Your Own
+
+```text
+You're asked to implement a website that: -
+1- Takes the name of the user in a prompt
+2- Returns it in a reversed order in an alert.
+
+This task will be submitted in a Google Form, but this time you will be asked to hand over the public
+GitHub repository that you created that contains the code for this task.
+
+Please, make sure to do the following: -
+1) Create the repository from your own repository
+2) Make the repository contains at least 2 commits
+```
