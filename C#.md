@@ -525,7 +525,7 @@ public class StringSample
 
         Console.WriteLine(str.Length);                  // Output: 11
         Console.WriteLine(str[0]);                      // Output: 't'
-        Console.WriteLine(str3);                        // Output: "abcc"
+        Console.WriteLine(str2);                        // Output: "AAAA"
         Console.WriteLine(str3);                        // Output: "abcc"
     }
 }
@@ -593,7 +593,7 @@ strings and inserted at a specified place in the format string. For example: -
 
 ```csharp
 decimal temp = 20.4m;
-string s = String.Format("The temperature is {0}°C.", temp);
+string s = string.Format("The temperature is {0}°C.", temp);
 Console.WriteLine(s);
 // Displays 'The temperature is 20.4°C.'
 ```
