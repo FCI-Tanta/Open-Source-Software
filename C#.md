@@ -223,6 +223,22 @@ decimal myMoney = 3_000.5m;
 myMoney = 400.75M;
 ```
 
+### Type Conversion
+
+We use `System.Convert` class static methods to convert from type to type and mainly from string to any numeric type.
+
+```csharp
+int i = Convert.ToInt32("12");
+double d = Convert.ToDouble("12.5");
+```
+
+Or, more easily we can use the built-in methods in every type as following: -
+
+```csharp
+int i = int.Parse("12");
+double d = double.Parse("12.5");
+```
+
 ## Operators
 
 C# provides a number of operators. Many of them are supported by the built-in types and allow you to perform basic
@@ -434,7 +450,8 @@ An array has the following properties: -
 - A jagged array is an array of arrays, and therefore its elements are reference types and are initialized to null.
 - Arrays are zero indexed: an array with n elements is indexed from 0 to n-1.
 - Array elements can be of any type, including an array type.
-- For value types, the array elements are initialized with the default value, the 0-bit pattern; the elements will have the value 0.
+- For value types, the array elements are initialized with the default value, the 0-bit pattern; the elements will have
+  the value 0.
 - All the reference types (including the non-nullable), have the values null.
 
 ```csharp
@@ -454,4 +471,227 @@ public class TestArraysClass
 // Output:
 // The array has 2 dimensions.
 // The array has 1 at the begining.
+```
+
+## Char & Strings
+
+### Char type & operations
+
+Char type in C# represents a character as a UTF-16 code unit.
+
+```csharp
+public class CharStructureSample
+{
+    private static void Main()
+    {
+        var chA = 'A';
+        char ch1 = '1';
+        string str = "test string";
+
+        Console.WriteLine(chA.CompareTo('B'));          // Output: "-1" (meaning 'A' is 1 less than 'B')
+        Console.WriteLine(chA.Equals('A'));             // Output: "True"
+        Console.WriteLine(char.GetNumericValue(ch1));   // Output: "1"
+        Console.WriteLine(char.IsControl('\t'));        // Output: "True"
+        Console.WriteLine(char.IsDigit(ch1));           // Output: "True"
+        Console.WriteLine(char.IsLetter(','));          // Output: "False"
+        Console.WriteLine(char.IsLower('u'));           // Output: "True"
+        Console.WriteLine(char.IsNumber(ch1));          // Output: "True"
+        Console.WriteLine(char.IsPunctuation('.'));     // Output: "True"
+        Console.WriteLine(char.IsSeparator(str, 4));    // Output: "True"
+        Console.WriteLine(char.IsSymbol('+'));          // Output: "True"
+        Console.WriteLine(char.IsWhiteSpace(str, 4));   // Output: "True"
+        Console.WriteLine(char.Parse("S"));             // Output: "S"
+        Console.WriteLine(char.ToLower('M'));           // Output: "m"
+        Console.WriteLine('x'.ToString());              // Output: "x"
+    }
+}
+```
+
+### String Creation & Operations
+
+String type in C# represents a sequence of characters in UTF-16 code unit.
+
+```csharp
+public class StringSample
+{
+    private static void Main()
+    {
+        var chA = 'A';
+        string str = "test string";
+        System.String str1 = "Hello";
+        
+        var str2 = new string(chA, 4);
+        var str3 = new string(new char[] { 'a', 'b', 'c' });
+
+        Console.WriteLine(str.Length);                  // Output: 11
+        Console.WriteLine(str[0]);                      // Output: 't'
+        Console.WriteLine(str3);                        // Output: "abcc"
+        Console.WriteLine(str3);                        // Output: "abcc"
+    }
+}
+```
+
+- Properties: -
+
+| Property | Description                      | Syntax                                                  |
+|----------|----------------------------------|---------------------------------------------------------|
+| `Length` | returns the length of the string | `"abc".Length`: returns 3                               |
+| `Empty`  | returns an empty string          | `var str = string.Empty` equivalent to `var str = "";`  |
+
+- Member Functions (Methods): -
+
+| Method        | Description                                                                                                                                                                     | Syntax                                        |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| `[i]`         | returns the character at the specified index (i)                                                                                                                                | `"abc"[1]` returns 'b'                        |
+| `Concat`      | returns a string resulting from combining two strings                                                                                                                           | `"abc".Concat('def')` returns 'abcdef'        |
+| `Replace`     | returns a new string in which all occurrences of a specified Unicode character or String in the current string are replaced with another specified Unicode character or String. | `"abc".Replace('b', 'a')` returns "aac"       |
+| `IndexOf`     | returns the index of the first occurence of the specified value, or -1 if it doesn't exist                                                                                      | `"abc".IndexOf('b')` returns 1                |
+| `LastIndexOf` | returns the index of the last occurence of the specified value, or -1 if it doesn't exist                                                                                       | `"abbc".LastIndexOf('b')` returns 2           |
+| `[i..j]`      | returns an extracted section of the string from i to j                                                                                                                          | `"abbc"[0..2]` returns "ab"                   |
+| `Substring`   | returns an extracted section of the string from i to j                                                                                                                          | `"abbc".Substring(0, 2)` returns "ab"         |
+| `ToLower`     | returns the lower case version of the string                                                                                                                                    | `"ABC".ToLower()` returns "abc"               |
+| `ToUpper`     | returns the upper case version of the string                                                                                                                                    | `"abc".ToUpper()` returns "ABC"               |
+| `StartWith`   | returns a boolean determining whether the beginning of this string instance matches the specified string.                                                                       | `"abc".StartWith("ab")` returns true          |
+| `EndWith`     | returns a boolean determining whether the end of this string instance matches the specified string.                                                                             | `"abc".EndWith("bc")` returns true            |
+| `Split`       | returns a string array that contains the substrings in this instance that are delimited by elements of a specified string or Unicode character array.                           | `"abc".Split('b')` returns ["a", "c"]         |
+| `ToCharArray` | returns the characters in this instance to a Unicode character array.                                                                                                           | `"abc".ToCharArray()` returns ['a', 'b', 'c'] |
+| `Trim`        | returns a new string in which all leading and trailing occurrences of a set of specified characters from the current string are removed.                                        | `" abc ".Trim()` returns "abc"                |
+
+### Escape Sequences & Verbatim strings
+
+Character combinations consisting of a backslash (\) followed by a letter or by a combination of digits are called "
+escape sequences." To represent a newline character, single quotation mark, or certain other characters in a character
+constant, you must use escape sequences. An escape sequence is regarded as a single character and is therefore valid as
+a character constant.
+
+| Escape sequence | Character name  | Unicode encoding  |
+|-----------------|-----------------|-------------------|
+| \\'             | Single quote    | 0x0027            |
+| \\"             | Double quote    | 0x0022            |
+| \\\\            | Backslash       | 0x005C            |
+| \0              | Null            | 0x0000            |
+| \a              | Alert           | 0x0007            |
+| \b              | Backspace       | 0x0008            |
+| \f              | Form feed       | 0x000C            |
+| \n              | New line        | 0x000A            |
+| \r              | Carriage return | 0x000D            |
+| \t              | Horizontal tab  | 0x0009            |
+| \v              | Vertical tab    | 0x000B            |
+
+We can use the `@` sign in C# to represent a verbatim string which is just a string with no escape sequence except for
+the quotes.
+
+```csharp
+var str = @"C:\Users\himat";
+var str2 = @"Hello, ""Ibrahim""";
+```
+
+### string.Format & string interpolation
+
+`string.Format` starts with a format string, followed by one or more objects or expressions that will be converted to
+strings and inserted at a specified place in the format string. For example: -
+
+```csharp
+decimal temp = 20.4m;
+string s = String.Format("The temperature is {0}°C.", temp);
+Console.WriteLine(s);
+// Displays 'The temperature is 20.4°C.'
+```
+
+The {0} in the format string is a format item. 0 is the index of the object whose string value will be inserted at that
+position. (Indexes start at 0.) If the object to be inserted is not a string, its ToString method is called to convert
+it to one before inserting it in the result string.
+
+Here's another example that uses two format items and two objects in the object list: -
+
+```csharp
+string s = string.Format("At {0}, the temperature is {1}°C.", DateTime.Now, 20.4);
+Console.WriteLine(s);
+// Output similar to: 'At 4/10/2015 9:29:41 AM, the temperature is 20.4°C.'
+```
+
+You can have as many format items and as many objects in the object list as you want, as long as the index of every
+format item has a matching object in the object list. You also don't have to worry about which overload you call; the
+compiler will select the appropriate one for you.
+
+#### Control Formatting
+
+You can follow the index in a format item with a format string to control how an object is formatted. For example, {0:d}
+applies the "d" format string to the first object in the object list. Here is an example with a single object and two
+format items: -
+
+```csharp
+string s = string.Format("It is now {0:d} at {0:t}", DateTime.Now);
+Console.WriteLine(s);
+// Output similar to: 'It is now 4/10/2015 at 10:04 AM'
+```
+
+| Format specifier           | Name                     | Description                                                                                                                                                                                                                                | Examples                                                                                                                                                                                                                                                                                                                        |
+|----------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| "C" or "c"                 | Currency                 | Result: A currency value.<br /><br /> Supported by: All numeric types.<br /><br /> Precision specifier: Number of decimal digits.                                                                                                          | 123.456 ("C", en-US)<br />-> \\$123.46<br /><br /> 123.456 ("C", fr-FR)<br />-> 123,46 &euro;<br /><br /> 123.456 ("C", ja-JP)<br />-> ¥123<br /><br /> -123.456 ("C3", en-US)<br />-> (\\$123.456)<br /><br /> -123.456 ("C3", fr-FR)<br />-> -123,456 &euro;<br /><br /> -123.456 ("C3", ja-JP)<br />-> -¥123.456             |
+| "D" or "d"                 | Decimal                  | Result: Integer digits with optional negative sign.<br /><br /> Supported by: Integral types only.<br /><br /> Precision specifier: Minimum number of digits.<br /><br /> Default precision specifier: Minimum number of digits required.  | 1234 ("D")<br />-> 1234<br /><br /> -1234 ("D6")<br />-> -001234                                                                                                                                                                                                                                                                |
+| "E" or "e"                 | Exponential (scientific) | Result: Exponential notation.<br /><br /> Supported by: All numeric types.<br /><br /> Precision specifier: Number of decimal digits.<br /><br /> Default precision specifier: 6.                                                          | 1052.0329112756 ("E", en-US)<br />-> 1.052033E+003<br /><br /> 1052.0329112756 ("e", fr-FR)<br />-> 1,052033e+003<br /><br /> -1052.0329112756 ("e2", en-US)<br />-> -1.05e+003<br /><br /> -1052.0329112756 ("E2", fr-FR)<br />-> -1,05E+003                                                                                   |
+| "F" or "f"                 | Fixed-point              | Result: Integral and decimal digits with optional negative sign.<br /><br /> Supported by: All numeric types.<br /><br /> Precision specifier: Number of decimal digits.                                                                   | 1234.567 ("F", en-US)<br />-> 1234.57<br /><br /> 1234.567 ("F", de-DE)<br />-> 1234,57<br /><br /> 1234 ("F1", en-US)<br />-> 1234.0<br /><br /> 1234 ("F1", de-DE)<br />-> 1234,0<br /><br /> -1234.56 ("F4", en-US)<br />-> -1234.5600<br /><br /> -1234.56 ("F4", de-DE)<br />-> -1234,5600                                 |
+| "P" or "p"                 | Percent                  | Result: Number multiplied by 100 and displayed with a percent symbol.<br /><br /> Supported by: All numeric types.<br /><br /> Precision specifier: Desired number of decimal places.                                                      | 1 ("P", en-US)<br />-> 100.00 %<br /><br /> 1 ("P", fr-FR)<br />-> 100,00 %<br /><br /> -0.39678 ("P1", en-US)<br />-> -39.7 %<br /><br /> -0.39678 ("P1", fr-FR)<br />-> -39,7 %                                                                                                                                               |
+| "X" or "x"                 | Hexadecimal              | Result: A hexadecimal string.<br /><br /> Supported by: Integral types only.<br /><br /> Precision specifier: Number of digits in the result string.                                                                                       | 255 ("X")<br />-> FF<br /><br /> -1 ("x")<br />-> ff<br /><br /> 255 ("x4")<br />-> 00ff<br /><br /> -1 ("X4")<br />-> 00FF                                                                                                                                                                                                     |
+| Any other single character | Unknown specifier        | Result: Throws a System.FormatException at runtime.                                                                                                                                                                                        |                                                                                                                                                                                                                                                                                                                                 |
+
+#### Control Spacing & Alignment
+
+You can define the width of the string that is inserted into the result string by using syntax such as {0,12}, which
+inserts a 12-character string. In this case, the string representation of the first object is right-aligned in the
+12-character field. (If the string representation of the first object is more than 12 characters in length, though, the
+preferred field width is ignored, and the entire string is inserted into the result string.)
+
+```csharp
+var str = string.Format("{0,10} {1,-10}1", "Year", "Month");
+Console.WriteLine(str); // Output:      Year Month     1
+```
+
+#### The General Rule
+
+```csharp
+{index[,alignment][:formatString]}
+```
+
+***index***
+
+The zero-based index of the argument whose string representation is to be included at this position in the string. If
+this argument is null, an empty string will be included at this position in the string.
+
+***alignment***
+
+Optional. A signed integer that indicates the total length of the field into which the argument is inserted and whether
+it is right-aligned (a positive integer) or left-aligned (a negative integer). If you omit alignment, the string
+representation of the corresponding argument is inserted in a field with no leading or trailing spaces.
+
+If the value of alignment is less than the length of the argument to be inserted, alignment is ignored and the length of
+the string representation of the argument is used as the field width.
+
+***formatString***
+
+Optional. A string that specifies the format of the corresponding argument's result string. If you omit formatString,
+the corresponding argument's parameterless ToString method is called to produce its string representation.
+
+#### String interpolation
+
+We can use the dollar sign before a string to interpolate variables into it using the same functionality
+that `string.Format` provides.
+
+```csharp
+$"{<interpolationExpression>[,<alignment>][:<formatString>]}"
+```
+
+Here an example of how we can accomplish something like that: -
+
+```csharp
+var salary = 1531.323;
+var str = $"{salary,10:F2}";
+
+Console.WriteLine($"{"Salary",10}");
+Console.WriteLine(str);
+
+// Output:
+//    Salary
+//   1531.32
 ```
