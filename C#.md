@@ -378,7 +378,7 @@ for (int i = 0; i < 5; i++)
     Console.Write(i);
 }
 // Output:
-// 012
+// 01234
 ```
 
 ```csharp
@@ -422,13 +422,13 @@ public class TestArraysClass
         var array2 = new int[] { 1, 3, 5, 7, 9 };
 
         // Alternative syntax.
-        var array3 = { 1, 2, 3, 4, 5, 6 };
+        int[] array3 = { 1, 2, 3, 4, 5, 6 };
 
         // Declare a two dimensional array.
         var multiDimensionalArray1 = new int[2, 3];
 
         // Declare and set array element values.
-        var multiDimensionalArray2 = { { 1, 2, 3 }, { 4, 5, 6 } };
+        int[,] multiDimensionalArray2 = { { 1, 2, 3 }, { 4, 5, 6 } };
 
         // Declare a jagged array.
         var jaggedArray = new int[6][];
@@ -526,7 +526,7 @@ public class StringSample
         Console.WriteLine(str.Length);                  // Output: 11
         Console.WriteLine(str[0]);                      // Output: 't'
         Console.WriteLine(str2);                        // Output: "AAAA"
-        Console.WriteLine(str3);                        // Output: "abcc"
+        Console.WriteLine(str3);                        // Output: "abc"
     }
 }
 ```
