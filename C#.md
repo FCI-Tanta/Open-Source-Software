@@ -9,6 +9,21 @@ Microsoft in 2000 and originally started as closed source project and then conve
 an open source project in 2015 as a part of Microsoft's software revolution.
 </p>
 
+## Table of Content
+
+- [ST211: Open Source Software](#st211-open-source-software)
+- [Table of Content](#table-of-content)
+- [Introduction to C# and .NET Core](#introduction-to-c-and-net-core)
+- [DotNet SDK](#dotnet-sdk)
+- [C# Projects (csproj file)](#c-projects-csproj-file)
+- [C# Syntax](#c-syntax)
+- [Intrinsic Types](#intrinsic-types)
+- [Operators](#operators)
+- [Statements](#statements)
+- [Arrays](#arrays)
+- [Char & Strings](#char--strings)
+- [Introduction to Classes](#introduction-to-classes)
+
 ## Introduction to C# and .NET Core
 
 .NET is a free and open-source, managed computer software framework for Windows, Linux, and macOS operating systems. It
@@ -296,7 +311,7 @@ include more information: -
 ```csharp
 // Variable declaration statements.
 var area = 2D;
-double area; // no initalized vlaue
+double area; // no initalized value
 double radius = 2;
 
 // Constant declaration statement.
@@ -694,4 +709,141 @@ Console.WriteLine(str);
 // Output:
 //    Salary
 //   1531.32
+```
+
+## Introduction to Classes
+
+Before we start moving forward with Object-Oriented Programming, there's some concepts that you should be comfortable
+with: -
+
+1- A `class` can be represented in two different ways: -
+
+- A template definition of the method(s) and data member(s) in a particular kind of object.
+- A user-defined type that describes what a certain type of object will look like.
+
+2- An `object` is a single instance of a class (a variable) usually created by the `new` operator.
+
+3- A **method** is a programmed procedure (function, series of steps) that is defined as part of a class and included in
+any
+object of that class.
+
+4- A **constructor** is a special type of methods that can be used to create an object using the `new` operator.
+
+5- A **data member** is a variable defined globally in a class to represent a unique internal object data.
+
+6- An **access modifier** is keyword that is used in order to specify the accessibility of the methods, classes,
+constructors, and other data members.
+
+7- A `static` member is a member of a class that can be used without the need of class instance (object).
+
+8- A `static` class is a class that can only contain static members and contains no constructors, therefore can't be
+instantiated.
+
+Here's an example containing all of these definitions in action: -
+
+```csharp
+using System;
+
+namespace ObjectOriented;
+
+// 'public' is an access modifier indicating that this class can be used anywhere even outside this project.
+// 'class' is a keyword used to define a new class (user-defined type).
+// "Calculator" is just the name of the newly defined class.
+public class Calculator 
+{
+    // 'private' is an access modifier indicating that this data member can only be used within the defined class.
+    // 'int' is the data member's type.
+    // "_firstValue" & "_secondValue" are just the name of the data members.
+    // NOTE: '_' the underscore at the beginning of the data member name is just convention and can be removed.
+    // NOTE: data members can be of any type.
+    // NOTE data members have the default value of their type if no value is assigned. 
+    private int _firstValue;
+    private int _secondValue;
+    
+    // 'private' is an access modifier indicating that this constructor can only be used within the defined class.
+    // "Calculator" is the name of the class (indicating that this is a contructor)
+    // NOTE: constructors have type (not even void), and can't be used as normal methods. They can only be used using the 'new' operator
+    private Calculator()
+    {
+        Console.WriteLine("Creating Object ...");
+    }
+    
+    // 'public' is an access modifier indicating that this constructor can be used anywhere even outside this project.
+    // "firstValue" & "secondValue" are just the parameters of this constructor that should be passed when using the 'new' operator.
+    public Calculator(int firstValue, int secondValue)
+    {
+        // 'this' is a keyword referencing the current object instance.
+        // "_firstValue" & "_secondValue" are the object data members.
+        // "firstValue" & "secondValue" are the constructor arguments.
+        // NOTE: the 'this' keyword here is optional because the "_firstValue" name is different than "firstValue"
+        //       and C# can understand that you're using the data member for the first and the constructor argument for the second.
+        this._firstValue = firstValue;
+        this._secondValue = secondValue;
+    }
+    
+    // 'public' is an access modifier indicating that this method can be used anywhere even outside this project.
+    // 'int' is the method's return type.
+    // "Sum" is just the method name.
+    public int Sum()
+    {
+        // NOTE: we didn't have to use the 'this' keyword in here.
+        return _firstValue + _secondValue;
+    }
+    
+    // 'public' is an access modifier indicating that this method can be used anywhere even outside this project.
+    // 'static' is a keyword indicating that this method can be called without an instance of the class (object).
+    // 'int' is the method's return type.
+    // "Sum" is just the method name.
+    // "firstValue" & "secondValue" are just the parameters of this method.
+    public static int Sum(int firstValue, int secondValue)
+    {
+        // Using the 'new' operator to create an object called "calculator".
+        // NOTE: here we're using the private constructor that has no parameters.
+        // NOTE: we can use the private members of the class here because we still in the class context.
+        var calculator = new Calculator();
+        
+        // NOTE: we can't use the 'this' keyword since we're in a static context. So, we should use the name of the object
+        //       that we created to access the object data members.
+        calculator._firstValue = firstValue;
+        calculator._secondValue = secondValue;
+        
+        // Calling the "Sum" method that has no parameters.
+        // NOTE: we also need an object in order to call it since that it's a class member.
+        return calculator.Sum();
+    }
+}
+
+// 'internal' is an access modifier indicating that this class can only be used in this project.
+internal class Program
+{
+    // 'private' is an access modifier indicating that this static method can be only used withing this class.
+    private static void Main()
+    {
+        var firstValue = int.Parse(Console.ReadLine());
+        var secondValue = int.Parse(Console.ReadLine());
+
+        // Using the 'new' operator to create an object called "calculator".
+        // NOTE: here we're using the public constructor that has two parameters.
+        // NOTE: we can't use the private members of the class here because we're outside the class context.
+        // ERROR: var calculator = new Calculator();
+        var calculator = new Calculator(firstValue, secondValue);
+
+        // Calling the "Sum" method that has no parameters.
+        // NOTE: we also need an object in order to call it since that it's a class member.
+        // NOTE: "calculator" is the name of the object (variable) that we created.
+        Console.WriteLine("The sum is " + calculator.Sum());
+
+        // Calling the static "Sum" method that has two parameters.
+        // NOTE: we also don't need an object in order to call it since that it's a static member.
+        // NOTE: "Calculator" is the name of the class.
+        Console.WriteLine("The sum is " + Calculator.Sum(firstValue, secondValue));
+    }
+}
+
+//  IN >> 1
+//  IN >> 3
+// OUT >> Creating Object using a public constructor...
+// OUT >> The sum is 4
+// OUT >> Creating Object using a private constructor...
+// OUT >> The sum is 4
 ```
