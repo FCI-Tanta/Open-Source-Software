@@ -762,7 +762,7 @@ public class Calculator
     
     // 'private' is an access modifier indicating that this constructor can only be used within the defined class.
     // "Calculator" is the name of the class (indicating that this is a contructor)
-    // NOTE: constructors have type (not even void), and can't be used as normal methods. They can only be used using the 'new' operator
+    // NOTE: constructors don't have type (not even void), and can't be used as normal methods. They can only be used using the 'new' operator
     private Calculator()
     {
         Console.WriteLine("Creating Object ...");
